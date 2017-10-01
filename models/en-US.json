@@ -17,10 +17,12 @@
           "samples": []
         },
         {
-          "name": "Ping",
+          "name": "PingIntent",
           "slots": [],
           "samples": [
             "to ping",
+            "to ping me",
+            "to send me a ping",
             "to send a ping"
           ]
         }
