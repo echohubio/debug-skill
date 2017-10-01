@@ -6,8 +6,8 @@
           "name": "EchoHub Debug",
           "summary": "Assist in debugging EchoHub ecosystem via Alexa",
           "description": "Used to assist in debugging EchoHub ecosystem",
-          "smallIconUri": "https://smallUri.com",
-          "largeIconUri": "https://largeUri.com",
+          "smallIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/108.png",
+          "largeIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/512.png",
           "examplePhrases": [
             "Alexa open EchoHub Debug",
             "Alexa tell EchoHub Debug to send a ping",
