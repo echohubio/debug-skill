@@ -2,3 +2,6 @@ node_modules
 .serverless
 .webpack
 reports
+.ask/config
+skill.json
+skill-auth.json

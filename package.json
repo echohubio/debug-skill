@@ -29,7 +29,8 @@
   "name": "debug-skill",
   "scripts": {
     "deploy": "sls deploy",
-    "deploy-skill": "ask deploy",
+    "skill-production": "ln -nfs config-production .ask/config; sed 's/ ENV_STAGE//;s/ENV/production/' skill-template.json > skill.json; ask deploy",
+    "skill-staging": "ln -nfs config-staging .ask/config; sed 's/ ENV_STAGE/ staging/;s/ENV/staging/' skill-template.json > skill.json; ask deploy",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
