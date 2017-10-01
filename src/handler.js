@@ -83,7 +83,7 @@ export default (event, context) => {
   accessToken = event.session.user.accessToken;
 
   const alexa = Alexa.handler(event, context);
-  alexa.appId = 'amzn1.ask.skill.53cfd959-17c1-40f5-84ea-190aca778693';
+  alexa.appId = process.env.ALEXA_SKILL_ID;
 
   if (!accessToken) {
     alexa.emit(':tell', 'There seems to be a problem, please relink your EchoHub account');

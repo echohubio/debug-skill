@@ -1,5 +1,11 @@
 service: alexa-skill-debug
 
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  aws_skill_id:
+    production: amzn1.ask.skill.53cfd959-17c1-40f5-84ea-190aca778693
+    staging: amzn1.ask.skill.a97e9076-86e4-4af1-97ef-c90606c570f3
+
 provider:
   name: aws
   runtime: nodejs6.10
@@ -9,6 +15,8 @@ provider:
   memorySize: 128
   cfLogs: true
   versionFunctions: false
+  environment:
+    ALEXA_SKILL_ID: ${self:custom.aws_skill_id.${self:custom.stage}}
 
 package:
   individually: true
