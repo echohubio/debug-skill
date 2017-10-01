@@ -5,7 +5,7 @@ import now from 'performance-now';
 let accessToken;
 
 const send = (payload) => {
-  const request = phetch.post('https://api.echohub.io/iot/thing/send')
+  const request = phetch.post(`${process.env.ECHOHUB_API_URL}/iot/thing/send`)
     .set('Content-Type', 'application/json')
     .set('Accept', 'application/json')
     .set('Authorization', accessToken)
@@ -21,8 +21,6 @@ const send = (payload) => {
 };
 
 const handlePingRequest = async (alexa) => {
-  console.error(alexa);
-
   const payload = {
     command: 'ping',
   };
