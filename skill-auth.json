@@ -1,0 +1,11 @@
+{
+  "accountLinkingRequest": {
+    "type": "AUTH_CODE",
+    "authorizationUrl": "https://www.echohub.io/alexa/link",
+    "domains": [],
+    "clientId": "io.echohub.alexaskill.debug",
+    "scopes": [],
+    "accessTokenUrl": "https://api.echohub.io/oauth2/token",
+    "accessTokenScheme": "HTTP_BASIC"
+  }
+}

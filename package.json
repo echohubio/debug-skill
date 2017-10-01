@@ -1,0 +1,37 @@
+{
+  "author": "John Ferlito <johnf@inodes.org> (http://inodes.org)",
+  "dependencies": {
+    "alexa-sdk": "^1.0.7",
+    "performance-now": "^2.1.0",
+    "phetch": "^0.0.10"
+  },
+  "description": "Alexa Chromecast Skill",
+  "devDependencies": {
+    "ask-cli": "^1.0.0-beta.1",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^7.1.0",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-loader": "^1.6.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "serverless": "^1.16.0",
+    "serverless-webpack": "^3.1.0",
+    "webpack": "^3.6.0",
+    "webpack-bundle-size-analyzer": "^2.7.0",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "license": "ISC",
+  "name": "debug-skill",
+  "scripts": {
+    "deploy": "sls deploy",
+    "deploy-skill": "ask deploy",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

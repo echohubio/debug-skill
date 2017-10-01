@@ -1,0 +1,24 @@
+service: alexa-skill-debug
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  profile: echohub
+  stage: production
+  region: us-east-1
+  memorySize: 128
+  cfLogs: true
+  versionFunctions: false
+
+package:
+  individually: true
+
+functions:
+  handler:
+    handler: src/handler.default
+    events:
+      - alexaSkill
+
+plugins:
+  - serverless-webpack
+    #  - serverless-sentry
