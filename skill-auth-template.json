@@ -3,7 +3,7 @@
     "type": "AUTH_CODE",
     "authorizationUrl": "https://www.ENV.echohub.io/alexa/link",
     "domains": [],
-    "clientId": "io.echohub.ENV.alexaskill.debug",
+    "clientId": "io.echohub.alexaskill.debug",
     "scopes": [],
     "accessTokenUrl": "https://api.ENV.echohub.io/oauth2/token",
     "accessTokenScheme": "HTTP_BASIC"
