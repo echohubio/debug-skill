@@ -38,7 +38,7 @@ const handlePingRequest = async (alexa) => {
   }
 
   if (data.errorCode) {
-    switch (data.errorCode) {
+    switch (data.errorType) {
       case 'no_hubber':
         alexa.emit(':tell', 'You need to link your hubber to EchoHub before I can help you.');
         break;

@@ -28,7 +28,9 @@
   "license": "ISC",
   "name": "debug-skill",
   "scripts": {
-    "deploy": "sls deploy",
+    "deploy-staging": "sls deploy -s staging",
+    "deploy-production": "sls deploy -s production",
+    "deploy": "yarn run deploy-staging",
     "skill-production": "ln -nfs config-production .ask/config; sed 's/ ENV_STAGE//;s/ENV/production/' skill-template.json > skill.json; ask deploy",
     "skill-staging": "ln -nfs config-staging .ask/config; sed 's/ ENV_STAGE/ staging/;s/ENV/staging/' skill-template.json > skill.json; ask deploy",
     "link-production": "ln -nfs config-production .ask/config; sed 's/ ENV_STAGE//;s/ENV/production/' skill-template.json > skill.json; ask api create-account-linking -s $(cat .ask/config | jq -r .deploy_settings.default.skill_id)",
