@@ -7,7 +7,7 @@
   },
   "description": "Alexa Chromecast Skill",
   "devDependencies": {
-    "ask-cli": "^1.0.0-beta.1",
+    "ask-cli": "1.0.0-beta.8",
     "babel-core": "^6.24.0",
     "babel-loader": "^7.1.0",
     "babel-minify-webpack-plugin": "^0.2.0",
