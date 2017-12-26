@@ -1,13 +1,34 @@
 {
   "skillManifest": {
-    "publishingInformation": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:543283071718:function:alexa-skill-debug-ENV-handler"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "containsAds": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
       "locales": {
         "en-US": {
-          "name": "EchoHub Debug ENV_STAGE",
-          "summary": "Assist in debugging EchoHub ecosystem via Alexa",
+          "privacyPolicyUrl": "https://www.echohub.io/about/privacy",
+          "termsOfUseUrl": "https://www.echohub.io/about/terms"
+        }
+      },
+      "usesPersonalInfo": false
+    },
+    "publishingInformation": {
+      "category": "SMART_HOME",
+      "distributionCountries": [],
+      "isAvailableWorldwide": true,
+      "locales": {
+        "en-US": {
           "description": "Used to assist in debugging EchoHub ecosystem",
-          "smallIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/108.png",
-          "largeIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/512.png",
           "examplePhrases": [
             "Alexa open EchoHub Debug",
             "Alexa tell EchoHub Debug to send a ping",
@@ -16,34 +37,14 @@
           "keywords": [
             "echohub",
             "debug"
-          ]
+          ],
+          "largeIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/512.png",
+          "name": "EchoHub Debug ENV_STAGE",
+          "smallIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/108.png",
+          "summary": "Assist in debugging EchoHub ecosystem via Alexa"
         }
       },
-      "distributionCountries": [],
-      "isAvailableWorldwide": true,
-      "testingInstructions": "1) Setup Echohub etc",
-      "category": "SMART_HOME"
-    },
-    "privacyAndCompliance": {
-      "allowsPurchases": false,
-      "usesPersonalInfo": false,
-      "isChildDirected": false,
-      "isExportCompliant": true,
-      "containsAds": false,
-      "locales": {
-        "en-US": {
-          "privacyPolicyUrl": "https://www.echohub.io/about/privacy",
-          "termsOfUseUrl": "https://www.echohub.io/about/terms"
-        }
-      }
-    },
-    "apis": {
-      "custom": {
-        "endpoint": {
-          "uri": "arn:aws:lambda:us-east-1:543283071718:function:alexa-skill-debug-ENV-handler"
-        }
-      }
-    },
-    "manifestVersion": "1.0"
+      "testingInstructions": "1) Setup Echohub etc"
+    }
   }
 }
