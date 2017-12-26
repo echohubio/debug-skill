@@ -1,58 +1,100 @@
 import Alexa from 'alexa-sdk';
 import phetch from 'phetch';
 import now from 'performance-now';
+import PromiseTimeout from 'promise-chain-timeout-rejection';
 
-let accessToken;
+class EchoHubApi {
+  handler(event, context) {
+    this.event = context;
+    this.context = context;
+    this.accessToken = event && event.session && event.session.user && event.session.user.accessToken;
 
-const send = (payload) => {
-  const request = phetch.post(`${process.env.ECHOHUB_API_URL}/iot/thing/send`)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .set('Authorization', accessToken)
-    .json(payload)
-    .then(res => res.json())
-    .catch((err) => {
-      console.error('DERROR');
-      console.error(accessToken);
-      console.error(err);
-    });
+    if (!this.accessToken) {
+      return {
+        errorType: 'no_auth',
+      };
+    }
 
-  return request;
-};
-
-const handlePingRequest = async (alexa) => {
-  const payload = {
-    command: 'ping',
-  };
-
-  const start = now();
-  const data = await send(payload);
-  const end = now();
-  const diff = (start - end).toFixed(3);
-
-  console.error(data);
-
-  if (!data) {
-    alexa.emit(':tell', 'I\'m sorry, I had a problem communicating with EchoHub.');
-    return;
+    return {};
   }
 
-  if (data.errorCode) {
-    switch (data.errorType) {
-      case 'no_hubber':
-        alexa.emit(':tell', 'You need to link your hubber to EchoHub before I can help you.');
+  execute(command, ...args) {
+    const payload = {
+      command: 'ping',
+      args,
+    };
+
+    const request = phetch.put(`${process.env.ECHOHUB_API_URL}/iot/thing`)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .set('Authorization', this.accessToken)
+      .json(payload)
+      .then(res => res.json());
+
+    const promiseTimeout = new PromiseTimeout(this.context.getRemainingTimeInMillis() - 500);
+
+    return promiseTimeout.globalTimeoutRejection(request)
+      .then(() => request)
+      .catch((err) => {
+        const errorType = err instanceof PromiseTimeout.PromiseTimeOutError ? 'api_timeout' : 'unknown';
+
+        return {
+          errorType,
+        };
+      });
+  }
+
+  static handleError(alexa, error) {
+    console.error(error);
+
+    if (!error) {
+      alexa.emit(':tell', 'No data, please contact EchoHub support.');
+      return;
+    }
+
+    if (!error.errorCode) {
+      alexa.emit(':tell', 'No error, please contact EchoHub support');
+      return;
+    }
+
+    switch (error.errorType) {
+      case 'api_timeout':
+        alexa.emit(':tell', 'EchoHub API timed out, please contact EchoHub support');
         break;
+      case 'no_auth':
+        alexa.emit(':tell', 'I couldn\'t authenticate you. Have you linked your skill to EchoHub?');
+        break;
+      case 'no_hubber':
+        alexa.emit(':tell', 'You need to link your local hubber to EchoHub before I can help you.');
+        break;
+      case 'hubber_timeout':
+        alexa.emit(':tell', 'I can\'t contact your hubber, is it running?');
+        break;
+      case 'unknown':
       default:
-        console.error(data);
         alexa.emit(':tell', 'Unknown error, please contact EchoHub support');
         break;
     }
+  }
+}
 
+const echohub = new EchoHubApi();
+
+const handlePingRequest = async (alexa) => {
+  const start = now();
+  const response = await echohub.execute('ping');
+  const end = now();
+  const diff = (start - end).toFixed(3);
+
+  console.error(response);
+
+  if (response.errorType) {
+    echohub.handleError(alexa, response);
     return;
   }
 
-  if (data.msg !== 'pong') {
-    alexa.emit(':tell', 'Unknown error, please contact EchoHub support');
+  if (response.msg !== 'pong') {
+    alexa.emit(':tell', 'Unexpected response, please contact EchoHub support');
     return;
   }
 
@@ -78,13 +120,14 @@ const handlers = {
 
 export default (event, context) => {
   console.error(event);
-  accessToken = event.session.user.accessToken;
 
   const alexa = Alexa.handler(event, context);
   alexa.appId = process.env.ALEXA_SKILL_ID;
 
-  if (!accessToken) {
-    alexa.emit(':tell', 'There seems to be a problem, please relink your EchoHub account');
+  alexa.echohub = EchoHubApi.handler(event, context);
+
+  if (alexa.echohub.errorType) {
+    EchoHubApi.handleError(alexa, alexa.echohub);
     return;
   }
 
