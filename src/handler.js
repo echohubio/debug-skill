@@ -1,7 +1,7 @@
 import Alexa from 'alexa-sdk';
 import phetch from 'phetch';
 import now from 'performance-now';
-import PromiseTimeout from 'promise-chain-timeout-rejection';
+import PromiseChainTimeoutRejection from 'promise-chain-timeout-rejection';
 
 class EchoHubApi {
   handler(event, context) {
@@ -29,30 +29,29 @@ class EchoHubApi {
       .set('Accept', 'application/json')
       .set('Authorization', this.accessToken)
       .json(payload)
-      .then(res => res.json());
+      .then(res => res.json())
+      .catch(err => ({ errorType: 'phetch', errorMsg: err }));
 
-    const promiseTimeout = new PromiseTimeout(this.context.getRemainingTimeInMillis() - 500);
+    const promiseTimeout = new PromiseChainTimeoutRejection(this.context.getRemainingTimeInMillis() - 500);
 
-    return promiseTimeout.globalTimeoutRejection(request)
-      .then(() => request)
+    return promiseTimeout.globalTimeoutRejection(() => request)
       .catch((err) => {
-        const errorType = err instanceof PromiseTimeout.PromiseTimeOutError ? 'api_timeout' : 'unknown';
+        const errorType = err instanceof PromiseChainTimeoutRejection.PromiseTimeOutError ? 'api_timeout' : 'unknown';
 
         return {
           errorType,
+          errorMsg: err,
         };
       });
   }
 
   static handleError(alexa, error) {
-    console.error(error);
-
     if (!error) {
       alexa.emit(':tell', 'No data, please contact EchoHub support.');
       return;
     }
 
-    if (!error.errorCode) {
+    if (!error.errorType) {
       alexa.emit(':tell', 'No error, please contact EchoHub support');
       return;
     }
@@ -72,6 +71,8 @@ class EchoHubApi {
         break;
       case 'unknown':
       default:
+        console.error('UNKNOWN ERROR');
+        console.error(error);
         alexa.emit(':tell', 'Unknown error, please contact EchoHub support');
         break;
     }
@@ -86,10 +87,8 @@ const handlePingRequest = async (alexa) => {
   const end = now();
   const diff = (start - end).toFixed(3);
 
-  console.error(response);
-
   if (response.errorType) {
-    echohub.handleError(alexa, response);
+    EchoHubApi.handleError(alexa, response);
     return;
   }
 
@@ -124,10 +123,10 @@ export default (event, context) => {
   const alexa = Alexa.handler(event, context);
   alexa.appId = process.env.ALEXA_SKILL_ID;
 
-  alexa.echohub = EchoHubApi.handler(event, context);
+  const result = echohub.handler(event, context);
 
-  if (alexa.echohub.errorType) {
-    EchoHubApi.handleError(alexa, alexa.echohub);
+  if (result.errorType) {
+    EchoHubApi.handleError(alexa, result);
     return;
   }
 
