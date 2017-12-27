@@ -88,7 +88,7 @@ const handlePingRequest = async (alexa) => {
   const start = now();
   const response = await echohub.execute('ping');
   const end = now();
-  const diff = (start - end).toFixed(3);
+  const diff = (end - start).toFixed(3);
 
   if (response.errorType) {
     EchoHubApi.handleError(alexa, response);
