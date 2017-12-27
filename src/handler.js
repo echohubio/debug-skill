@@ -69,6 +69,9 @@ class EchoHubApi {
       case 'hubber_timeout':
         alexa.emit(':tell', 'I can\'t contact your hubber, is it running?');
         break;
+      case 'plugin_missing':
+        alexa.emit(':tell', 'You need to install the plugin for this skill on the EchoHub website.');
+        break;
       case 'unknown':
       default:
         console.error('UNKNOWN ERROR');
