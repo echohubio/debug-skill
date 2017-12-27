@@ -3,6 +3,7 @@
   "dependencies": {
     "alexa-sdk": "^1.0.7",
     "aws-sdk": "^2.175.0",
+    "deepmerge": "^2.0.1",
     "performance-now": "^2.1.0",
     "phetch": "^0.0.10",
     "promise-chain-timeout-rejection": "^1.1.0"
