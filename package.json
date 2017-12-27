@@ -2,6 +2,7 @@
   "author": "John Ferlito <johnf@inodes.org> (http://inodes.org)",
   "dependencies": {
     "alexa-sdk": "^1.0.7",
+    "aws-sdk": "^2.175.0",
     "performance-now": "^2.1.0",
     "phetch": "^0.0.10",
     "promise-chain-timeout-rejection": "^1.1.0"
@@ -23,9 +24,7 @@
     "serverless": "^1.16.0",
     "serverless-webpack": "^4.1.0",
     "webpack": "^3.6.0",
-    "webpack-bundle-size-analyzer": "^2.7.0",
-    "webpack-monitor": "^1.0.14",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-monitor": "^1.0.14"
   },
   "license": "ISC",
   "name": "debug-skill",
