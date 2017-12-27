@@ -48,18 +48,6 @@ class EchoHubApi {
 
   static languageStrings(theirStrings) {
     const myStrings = {
-      'en-UK': {
-        translation: {
-          ECHOHUB_NO_DATA: 'No data, please contact EchoHub support.',
-          ECHOHUB_NO_ERROR: 'No error, please contact EchoHub support',
-          ECHOHUB_API_TIMEOUT: 'EchoHub API timed out, please contact EchoHub support',
-          ECHOHUB_NO_AUTH: 'I couldn\'t authenticate you. Have you linked your skill to EchoHub?',
-          ECHOHUB_NO_HUBBER: 'You need to link your local hubber to EchoHub before I can help you.',
-          ECHOHUB_HUBBER_TIMEOUT: 'I can\'t contact your hubber, is it running?',
-          ECHOHUB_PLUGIN_MISSING: 'You need to install the plugin for this skill on the EchoHub website.',
-          ECHOHUB_UNKNOWN_ERROR: 'Unknown error, please contact EchoHub support',
-        },
-      },
       'en-US': {
         translation: {
           ECHOHUB_NO_DATA: 'No data, please contact EchoHub support.',
@@ -85,6 +73,11 @@ class EchoHubApi {
         },
       },
     };
+
+    myStrings['en-GB'] = { ...myStrings['en-US'] };
+    myStrings['en-IN'] = { ...myStrings['en-US'] };
+    myStrings['en-CA'] = { ...myStrings['en-US'] };
+    myStrings['en-AU'] = { ...myStrings['en-US'] };
 
     return merge(myStrings, theirStrings || {});
   }

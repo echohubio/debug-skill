@@ -46,13 +46,6 @@ const languageStrings = {
       PONG: 'pong took {{milliseconds}} milliseconds.',
     },
   },
-  'en-UK': {
-    translation: {
-      HELLO: 'Hi, welcome to EchoHub Debug. I can help debug any problems you might be having with EchoHub.',
-      NOT_UNDERSTOOD: 'Sorry, I didn\'t get that',
-      PONG: 'pong took {{milliseconds}} milliseconds.',
-    },
-  },
   'de-DK': {
     translation: {
       HELLO: 'Willkommen bei EchoHub Debug. Ich kann Ihnen helfen beim Debugging aller Probleme die Sie mit EchoHub haben.',
@@ -61,6 +54,11 @@ const languageStrings = {
     },
   },
 };
+
+languageStrings['en-GB'] = { ...languageStrings['en-US'] };
+languageStrings['en-IN'] = { ...languageStrings['en-US'] };
+languageStrings['en-CA'] = { ...languageStrings['en-US'] };
+languageStrings['en-AU'] = { ...languageStrings['en-US'] };
 
 export default (event, context) => {
   console.error(event);
