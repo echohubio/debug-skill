@@ -1,0 +1,32 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "echohub debug",
+      "types": [],
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "PingIntent",
+          "slots": [],
+          "samples": [
+            "für ein ping",
+            "mich zu pingen",
+            "mir ein ping zu schicken",
+            "ein ping zu schicken"
+          ]
+        }
+      ]
+    }
+  }
+}
