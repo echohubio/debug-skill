@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const slsw = require('serverless-webpack');
-const Visualizer = require('webpack-visualizer-plugin');
+const WebpackMonitor = require('webpack-monitor');
 
 module.exports = {
   entry: slsw.lib.entries,
@@ -25,6 +25,8 @@ module.exports = {
   },
   plugins: [
     new webpack.IgnorePlugin(/vertx/), // https://github.com/stefanpenner/es6-promise/issues/100
-    new Visualizer({ filename: '../../reports/statistics.html' }),
+    new WebpackMonitor({
+      target: '../.monitor.json',
+    }),
   ],
 };

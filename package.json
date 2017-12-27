@@ -24,6 +24,7 @@
     "serverless-webpack": "^4.1.0",
     "webpack": "^3.6.0",
     "webpack-bundle-size-analyzer": "^2.7.0",
+    "webpack-monitor": "^1.0.14",
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "license": "ISC",

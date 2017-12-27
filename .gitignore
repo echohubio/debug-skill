@@ -5,3 +5,4 @@ reports
 .ask/config
 skill.json
 skill-auth.json
+.monitor.json
