@@ -48,9 +48,16 @@ class EchoHubApi {
 
   static languageStrings(theirStrings) {
     const myStrings = {
-      'en-GB': {
+      'en-UK': {
         translation: {
-          SAY_HELLO_MESSAGE: 'Hello World!',
+          ECHOHUB_NO_DATA: 'No data, please contact EchoHub support.',
+          ECHOHUB_NO_ERROR: 'No error, please contact EchoHub support',
+          ECHOHUB_API_TIMEOUT: 'EchoHub API timed out, please contact EchoHub support',
+          ECHOHUB_NO_AUTH: 'I couldn\'t authenticate you. Have you linked your skill to EchoHub?',
+          ECHOHUB_NO_HUBBER: 'You need to link your local hubber to EchoHub before I can help you.',
+          ECHOHUB_HUBBER_TIMEOUT: 'I can\'t contact your hubber, is it running?',
+          ECHOHUB_PLUGIN_MISSING: 'You need to install the plugin for this skill on the EchoHub website.',
+          ECHOHUB_UNKNOWN_ERROR: 'Unknown error, please contact EchoHub support',
         },
       },
       'en-US': {
@@ -65,9 +72,16 @@ class EchoHubApi {
           ECHOHUB_UNKNOWN_ERROR: 'Unknown error, please contact EchoHub support',
         },
       },
-      'de-DE': {
+      'de-DK': {
         translation: {
-          SAY_HELLO_MESSAGE: 'Hallo Welt!',
+          ECHOHUB_NO_DATA: 'Keine Daten, bitte mit EchoHub support in Verbindung treten.',
+          ECHOHUB_NO_ERROR: 'Kein Fehler, bitte mit EchoHub support in Verbindung treten',
+          ECHOHUB_API_TIMEOUT: 'EchoHub API Zeitüberschreitung, bitte mit EchoHub support in Verbindung treten',
+          ECHOHUB_NO_AUTH: 'Konnte Sie sind nicht authentifizieren. Haben Sie ihren Skill mit EchoHub verbunden?',
+          ECHOHUB_NO_HUBBER: 'Sie müssen Ihren localen Hubber mit EchoHub verbinden bevor ich Ihnen helfen kann.',
+          ECHOHUB_HUBBER_TIMEOUT: 'Ich kann keine Verbindung zum lokalen Hubber aufbauen, läuft er?',
+          ECHOHUB_PLUGIN_MISSING: 'Sie müssen das Plugin fuer diesen Skill von der EchoHub website installieren.',
+          ECHOHUB_UNKNOWN_ERROR: 'Unbekannter Fehler, bitte mit EchoHub support in Verbindung treten',
         },
       },
     };
