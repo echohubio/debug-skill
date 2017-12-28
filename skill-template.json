@@ -18,6 +18,10 @@
         "en-US": {
           "privacyPolicyUrl": "https://www.echohub.io/about/privacy",
           "termsOfUseUrl": "https://www.echohub.io/about/terms"
+        },
+        "de-DE": {
+          "privacyPolicyUrl": "https://www.echohub.io/about/privacy",
+          "termsOfUseUrl": "https://www.echohub.io/about/terms"
         }
       },
       "usesPersonalInfo": false
@@ -28,6 +32,22 @@
       "isAvailableWorldwide": true,
       "locales": {
         "en-US": {
+          "description": "Used to assist in debugging EchoHub ecosystem",
+          "examplePhrases": [
+            "Alexa open EchoHub Debug",
+            "Alexa tell EchoHub Debug to send a ping",
+            "Alexa tell EchoHub Debug to list my plugins"
+          ],
+          "keywords": [
+            "echohub",
+            "debug"
+          ],
+          "largeIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/512.png",
+          "name": "EchoHub Debug ENV_STAGE",
+          "smallIconUri": "https://raw.githubusercontent.com/echohubio/debug-skill/master/logos/108.png",
+          "summary": "Assist in debugging EchoHub ecosystem via Alexa"
+        },
+        "de-DE": {
           "description": "Used to assist in debugging EchoHub ecosystem",
           "examplePhrases": [
             "Alexa open EchoHub Debug",

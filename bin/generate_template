@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+trap "rm -f .skill[0-9].json; exit 1" SIGINT SIGTERM
+
+STAGE=$1
+if [ -z "$STAGE" ]; then
+  echo "Provide stage name as first argument"
+  exit 1
+fi
+
+if [ $STAGE = "production" ]; then
+  ENV_STAGE=""
+else
+  ENV_STAGE=" $STAGE"
+fi
+
+ln -nfs config-$STAGE .ask/config
+
+sed "s/ ENV_STAGE/$ENV_STAGE/;s/ENV/$STAGE/" skill-template.json > .skill0.json
+
+LOCALE=$(jq '.skillManifest.publishingInformation.locales."en-US"' .skill0.json)
+
+EN_LOCALES='"en-CA": $locale, "en-IN": $locale, "en-IN": $locale, "en-AU": $locale, "en-GB": $locale'
+
+jq --argjson locale "$LOCALE" '.skillManifest.publishingInformation.locales += {'"$EN_LOCALES"'}' .skill0.json > .skill1.json
+
+LOCALE=$(jq '.skillManifest.privacyAndCompliance.locales."en-US"' .skill0.json)
+jq --argjson locale "$LOCALE" '.skillManifest.privacyAndCompliance.locales += {'"$EN_LOCALES"', "de-DE": $locale}' .skill1.json > .skill2.json
+
+mv .skill2.json skill.json
+
+rm -f .skill[0-9].json
