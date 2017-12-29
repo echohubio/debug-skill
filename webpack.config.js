@@ -17,6 +17,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /keyv\/src\/index.js$/, // keyv has a wierd require that webpack doesn't like
+        loader: 'string-replace-loader',
+        query: {
+          search: 'adapters[adapter]',
+          replace: '\'events\'',
+        },
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: [/node_modules/],
