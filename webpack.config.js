@@ -24,7 +24,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.IgnorePlugin(/vertx/), // https://github.com/stefanpenner/es6-promise/issues/100
+    new webpack.IgnorePlugin(/^electron|keyv$/), // Surpress warnings: got has electron in a require and we don't use keyv
     new WebpackMonitor({
       target: '../.monitor.json',
     }),

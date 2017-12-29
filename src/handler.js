@@ -1,9 +1,8 @@
 import Alexa from 'alexa-sdk';
 import now from 'performance-now';
+import EchoHubAlexaSDK from 'echohub-alexa-sdk';
 
-import EchoHubApi from './echohubapi';
-
-const echohub = new EchoHubApi();
+const echohub = new EchoHubAlexaSDK();
 
 const handlePingRequest = async (alexa) => {
   const start = now();
@@ -12,7 +11,7 @@ const handlePingRequest = async (alexa) => {
   const diff = (end - start).toFixed(3);
 
   if (response.errorType) {
-    EchoHubApi.handleError(alexa, response);
+    EchoHubAlexaSDK.handleError(alexa, response);
     return;
   }
 
@@ -65,7 +64,7 @@ export default (event, context) => {
 
   const alexa = Alexa.handler(event, context);
   alexa.appId = process.env.ALEXA_SKILL_ID;
-  alexa.resources = EchoHubApi.languageStrings(languageStrings);
+  alexa.resources = EchoHubAlexaSDK.languageStrings(languageStrings);
 
   echohub.handler(event, context);
 
