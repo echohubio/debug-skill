@@ -4,7 +4,7 @@
     "alexa-sdk": "^1.0.7",
     "aws-sdk": "^2.175.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "echohub-alexa-sdk": "^1.0.0",
+    "echohub-alexa-sdk": "^1.0.2",
     "performance-now": "^2.1.0"
   },
   "description": "EchoHub Debug Skill",

@@ -1874,9 +1874,9 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-echohub-alexa-sdk@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/echohub-alexa-sdk/-/echohub-alexa-sdk-1.0.1.tgz#836aed6608ca8a76d8ddd5f198f953e27fd6cfce"
+echohub-alexa-sdk@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/echohub-alexa-sdk/-/echohub-alexa-sdk-1.0.2.tgz#1df682fc50731919db968e37f87b02a40cb888d9"
   dependencies:
     deepmerge "^2.0.1"
     got "^8.0.1"
