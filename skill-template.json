@@ -34,9 +34,9 @@
         "en-US": {
           "description": "Used to assist in debugging EchoHub ecosystem",
           "examplePhrases": [
-            "Alexa open EchoHub Debug",
-            "Alexa tell EchoHub Debug to send a ping",
-            "Alexa tell EchoHub Debug to list my plugins"
+            "Alexa open EchoHub Debug ENV_STAGE",
+            "Alexa tell EchoHub Debug ENV_STAGE to send a ping",
+            "Alexa tell EchoHub Debug ENV_STAGE to list my plugins"
           ],
           "keywords": [
             "echohub",
@@ -50,9 +50,9 @@
         "de-DE": {
           "description": "Used to assist in debugging EchoHub ecosystem",
           "examplePhrases": [
-            "Alexa open EchoHub Debug",
-            "Alexa tell EchoHub Debug to send a ping",
-            "Alexa tell EchoHub Debug to list my plugins"
+            "Alexa open EchoHub Debug ENV_STAGING",
+            "Alexa tell EchoHub Debug ENV_STAGING to send a ping",
+            "Alexa tell EchoHub Debug ENV_STAGING to list my plugins"
           ],
           "keywords": [
             "echohub",
