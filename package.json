@@ -39,5 +39,5 @@
     "skill-staging": "bin/generate_template staging; ask deploy",
     "test": "ask simulate --text 'ask echohub debug to send a ping' --locale en-US"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
