@@ -44,7 +44,7 @@
           ],
           "largeIconUri": "https://raw.githubusercontent.com/echohubio/media-kit/master/logos/debug-skill-512.png",
           "name": "EchoHub Debug ENV_STAGE",
-          "smallIconUri": ""https://raw.githubusercontent.com/echohubio/media-kit/master/logos/chromecast-skill-108.png",
+          "smallIconUri": "https://raw.githubusercontent.com/echohubio/media-kit/master/logos/chromecast-skill-108.png",
           "summary": "Assist in debugging EchoHub ecosystem via Alexa"
         },
         "de-DE": {

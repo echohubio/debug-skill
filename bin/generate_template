@@ -16,7 +16,7 @@ else
   ENV_STAGE=" $STAGE"
 fi
 
-ln -nfs config-$STAGE .ask/config
+ln -nfs $STAGE.json .ask/config
 
 sed "s/ ENV_STAGE/$ENV_STAGE/;s/ENV/$STAGE/" skill-template.json > .skill0.json
 

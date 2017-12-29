@@ -2,9 +2,7 @@ service: alexa-skill-debug
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  alexa_skill_id:
-    production: amzn1.ask.skill.53cfd959-17c1-40f5-84ea-190aca778693
-    staging: amzn1.ask.skill.a97e9076-86e4-4af1-97ef-c90606c570f3
+  alexa_skill_id: ${file(.ask/${self:custom.stage}.json):deploy_settings.default.skill_id}
   api_url:
     production: https://api.echohub.io
     staging: https://api.staging.echohub.io
@@ -19,7 +17,7 @@ provider:
   cfLogs: true
   versionFunctions: false
   environment:
-    ALEXA_SKILL_ID: ${self:custom.alexa_skill_id.${self:custom.stage}}
+    ALEXA_SKILL_ID: ${self:custom.alexa_skill_id}
     ECHOHUB_API_URL: ${self:custom.api_url.${self:custom.stage}}
 
 package:
