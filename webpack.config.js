@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const slsw = require('serverless-webpack');
+const MinifyPlugin = require('babel-minify-webpack-plugin');
 const WebpackMonitor = require('webpack-monitor');
 
 module.exports = {
@@ -32,7 +33,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.IgnorePlugin(/^electron|keyv$/), // Surpress warnings: got has electron in a require and we don't use keyv
+    new webpack.IgnorePlugin(/^electron$/), // Surpress warnings: got has electron in a require and we don't use keyv
+    new MinifyPlugin(),
     new WebpackMonitor({
       target: '../.monitor.json',
     }),
